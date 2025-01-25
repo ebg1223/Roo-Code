@@ -2070,6 +2070,8 @@ export class Cline {
 								if (provider) {
 									await provider.updateGlobalState("mode", mode_slug)
 									await provider.postStateToWebview()
+									// Update the model used in the new mode
+									await this.updateDiffStrategy()
 								}
 								pushToolResult(
 									`Successfully switched from ${getModeBySlug(currentMode)?.name ?? currentMode} mode to ${
